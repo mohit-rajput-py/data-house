@@ -11,6 +11,7 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const EmptyUpload = () => {
   const [isUploaded, setIsUploaded] = useState(false);
@@ -27,7 +28,7 @@ const EmptyUpload = () => {
       </EmptyHeader>
       <EmptyContent>
         {!isUploaded ? (
-          <Button onClick={()=>setIsUploaded(!isUploaded)} className="cursor-pointer" variant="outline" size="sm">
+          <Button onClick={()=>toast.info("Coming Soon!")} className="cursor-pointer" size="lg">
             Select File
           </Button>
         ) : (

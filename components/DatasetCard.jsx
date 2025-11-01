@@ -4,10 +4,11 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Database, Download, Globe, Lock } from "lucide-react";
+import { toast } from "sonner";
  
 export default function DatasetCard({
   name = "Customer Sales Data",
-  records = 1200, 
+  records = 0, 
   size = "2.4 MB",        
   url="",
   type = "CSV",
@@ -15,8 +16,9 @@ export default function DatasetCard({
   date = "Oct 28, 2025",
 }) {  
   const handleDownload = ()=>{
-    navigator.clipboard.writeText(url)
-    alert("CDN copied, Use anywhere to download or direct use!")
+    
+    navigator.clipboard.writeText(url.replace(" ","%20"))
+    toast.success("CDN copied, Use anywhere to download or direct use!")
   }
   return (
     <Card className="w-full rounded-2xl shadow-sm hover:shadow-md transition-all border border-muted/30">
@@ -47,7 +49,7 @@ export default function DatasetCard({
       </CardContent>
 
       <CardFooter className="flex justify-between items-center">
-        <Button className="cursor-pointer" variant="secondary" size="sm">
+        <Button onClick={()=>toast.info("Coming Soon")} className="cursor-pointer" variant="secondary" size="sm">
           Preview
         </Button>
         <Button onClick={handleDownload} className="cursor-pointer" size="sm">

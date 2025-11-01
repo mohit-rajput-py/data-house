@@ -10,7 +10,6 @@ export default function Datasets() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // you can later get category from user filter
   const category = "movies"; 
 
   useEffect(() => {
@@ -44,6 +43,7 @@ export default function Datasets() {
             size={`${d.sizeMB} MB`}
             type="CSV"
             url={d.url}
+            records={d.records}
             date={new Date(d.createdAt).toLocaleDateString("en-US", {
               month: "short",
               day: "numeric",
