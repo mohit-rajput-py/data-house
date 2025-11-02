@@ -24,7 +24,7 @@ export default function DatasetCard({
     <Card className="w-full rounded-2xl shadow-sm hover:shadow-md transition-all border border-muted/30">
       <CardHeader className="flex flex-col gap-1">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-lg font-semibold text-primary truncate">
+          <CardTitle className="text-lg font-semibold text-primary">
             {name}
           </CardTitle>
           {visibility === "public" ? (

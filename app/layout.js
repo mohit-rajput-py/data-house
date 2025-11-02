@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono , Outfit} from "next/font/google";
 import "./globals.css";
+import ReloadOnHome from "@/components/ReloadOnHome";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${outFit.variable} antialiased`}
         style={ { fontFamily : "var(--font-outfit)" }}
       >
+        <ReloadOnHome />
         {children}
       </body>
     </html>
