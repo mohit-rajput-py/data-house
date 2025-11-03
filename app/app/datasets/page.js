@@ -6,18 +6,24 @@ import DatasetCard from "@/components/DatasetCard";
 import PagesNum from "@/components/PagesNum";
 
 export default function Datasets() {
+  const [filters, SetFilters] = useState({
+    category: "movies",
+    sortBy: "random",
+  });
   const [datasets, setDatasets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const category = "movies"; 
-
   useEffect(() => {
     async function fetchDatasets() {
       try {
-        const res = await fetch(`/api/get-dataset?catagory=${category}`);
+        const res = await fetch(
+          `/api/get-dataset?catagory=${filters.category}`
+        );
         if (!res.ok) throw new Error("Failed to fetch datasets");
         const data = await res.json();
+        console.log(data);
+
         setDatasets(data.files || []);
       } catch (err) {
         setError(err.message);
@@ -27,14 +33,23 @@ export default function Datasets() {
     }
 
     fetchDatasets();
-  }, [category]);
+  }, [filters.category]);
 
-  if (loading) return <p className="text-center text-gray-500">Loading datasets...</p>;
+  useEffect(() => {
+    let sorted = [...datasets || []]
+    sorted = filters.sortBy === "random" ? sorted.sort(()=>Math.random()-0.5) : sorted
+    sorted = filters.sortBy === "size" ? sorted.sort((a,b)=> parseFloat(a.sizeMB) - parseFloat(b.sizeMB)) : sorted
+    sorted = filters.sortBy === "random" ? sorted.sort((a,b)=>new Date(b.createdAt) - new Date(a.createdAt)) : sorted
+    setDatasets(sorted)
+  }, [filters.sortBy]);
+
+  if (loading)
+    return <p className="text-center text-gray-500">Loading datasets...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
     <div className="w-full">
-      <FilterPaner />
+      <FilterPaner filters={filters} setFilters={SetFilters} />
       <div className="my-4 grid md:grid-cols-2 xl:grid-cols-3 gap-8">
         {datasets.map((d, i) => (
           <DatasetCard
