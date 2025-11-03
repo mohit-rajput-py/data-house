@@ -7,13 +7,14 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
+import { toast } from "sonner"
 
 const PagesNum = () => {
   return (
     <Pagination className="my-9">
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationPrevious onClick={()=>toast.error("Not Enough Datasets!")} href="#" />
         </PaginationItem>
        
         <PaginationItem>
@@ -22,13 +23,13 @@ const PagesNum = () => {
           </PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#">2</PaginationLink>
+          <PaginationLink onClick={()=>toast.error("Not Enough Datasets!")} href="#">2</PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationEllipsis />
+          <PaginationEllipsis onClick={()=>toast.error("Not Enough Datasets!")} />
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext href="#" />
+          <PaginationNext onClick={()=>toast.error("Not Enough Datasets!")} href="#" />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

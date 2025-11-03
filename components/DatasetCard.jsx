@@ -17,7 +17,7 @@ export default function DatasetCard({
 }) {  
   const handleDownload = ()=>{
     
-    navigator.clipboard.writeText(url.replace(" ","%20"))
+    navigator.clipboard.writeText(url.replaceAll(" ","%20"))
     toast.success("CDN copied, Use anywhere to download or direct use!")
   }
   return (

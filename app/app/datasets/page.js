@@ -7,7 +7,7 @@ import PagesNum from "@/components/PagesNum";
 
 export default function Datasets() {
   const [filters, SetFilters] = useState({
-    category: "movies",
+    category: "all",
     sortBy: "random",
   });
   const [datasets, setDatasets] = useState([]);
