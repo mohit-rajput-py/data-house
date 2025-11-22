@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import React, { useState } from "react";
 
-const FilterPaner = ({ filters, setFilters }) => {
+const FilterPaner = ({ filters, setFilters, count }) => {
   return (
     <div className="flex pb-6 border-b  mt-3 justify-between items-center gap-3 px-1  ">
       <div className="hidden sm:block max-w-1/3">
@@ -19,7 +19,7 @@ const FilterPaner = ({ filters, setFilters }) => {
           Avalible DataSet
         </h2>
         <p className="leading-7  text-gray-600">
-          <span className="font-medium text-primary">x</span> / xx Records
+          <span className="font-medium text-primary">{count}</span> / {count} Records
         </p>
       </div>
       <div className="flex justify-between sm:justify-end w-full sm:flex-row gap-3">

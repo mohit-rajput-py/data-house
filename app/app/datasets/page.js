@@ -37,9 +37,9 @@ export default function Datasets() {
 
   useEffect(() => {
     let sorted = [...datasets || []]
-    sorted = filters.sortBy === "random" ? sorted.sort(()=>Math.random()-0.5) : sorted
-    sorted = filters.sortBy === "size" ? sorted.sort((a,b)=> parseFloat(a.sizeMB) - parseFloat(b.sizeMB)) : sorted
-    sorted = filters.sortBy === "random" ? sorted.sort((a,b)=>new Date(b.createdAt) - new Date(a.createdAt)) : sorted
+    sorted = filters.sortBy === "random" ? sorted.sort(() => Math.random() - 0.5) : sorted
+    sorted = filters.sortBy === "size" ? sorted.sort((a, b) => parseFloat(a.sizeMB) - parseFloat(b.sizeMB)) : sorted
+    sorted = filters.sortBy === "random" ? sorted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) : sorted
     setDatasets(sorted)
   }, [filters.sortBy]);
 
@@ -49,7 +49,7 @@ export default function Datasets() {
 
   return (
     <div className="w-full">
-      <FilterPaner filters={filters} setFilters={SetFilters} />
+      <FilterPaner filters={filters} setFilters={SetFilters} count={datasets.length} />
       <div className="my-4 grid md:grid-cols-2 xl:grid-cols-3 gap-8">
         {datasets.map((d, i) => (
           <DatasetCard
