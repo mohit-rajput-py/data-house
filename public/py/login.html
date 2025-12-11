@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="global.css">
+    <script>
+        function validate() {
+            const email = document.getElementById("email").value.trim();
+            const reg = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/; // correct pattern
+
+            if (!reg.test(email)) {
+                alert("Enter a valid Email!");
+                return false;
+            }
+            const password = document.getElementById("password").value.trim();
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters!");
+                return false;
+            }
+
+            return true;  // allow form submission
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light border-bottom py-3 px-5">
+        <a class="navbar-brand font-weight-bold" href="#">Vision Vibe</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="py-5 px-3 mb-5" style="height: 75vh;">
+            <h2 class="text-center font-weight-bold text-primary mb-2">Login</h2>
+            <form action="#" class="mx-auto" onsubmit="return validate()" style="max-width: 600px;">
+                <div class="form-group">
+                    <label for="Email">Email:</label>
+                    <input type="text" id="email" class="form-control" placeholder="Enter Your Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="Password">Password:</label>
+                    <input type="password" id="password" class="form-control" placeholder="********">
+                </div>
+                <button type="submit" class="btn btn-block btn-primary">Login</button>
+                <button type="reset" class="btn btn-block btn-outline-primary">Reset</button>
+                <div class="d-flex justify-content-end mt-2">
+                    <a href="register.html" class=" text-dark text-decoration-underline">New? register</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="border-top py-3 px-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="font-weight-bold">Vision Vibe</span>
+            <span class="text-muted">© 2025 Vision Vibe. All rights reserved.</span>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>
